@@ -1,16 +1,97 @@
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    min-height: 100vh;
+    background-color: var(--bg);
+    overflow-y: overlay;
+    color: var(--def-color);
+}
+
+::selection {
+    background-color: #5691ff4b;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(225, 225, 225, 0.8);
+    border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(210, 210, 210, 0.8);
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.unsel {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+:root {
+    --bg: white;
+    --def-color: black;
+    --box-color: #ffffff;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --ctheme-red: currentColor;
+    --ctheme-green: currentColor;
+    --ctheme-blue: currentColor;
+    --ctheme-purple: currentColor;
+    --ctheme-magenta: currentColor;
+    --ctheme-cyan: currentColor;
+    --ctheme-yellow: currentColor;
+    --ctheme-force-white: #c0caf5;
+    --ctheme-force-red: #f76a6b;
+    --ctheme-force-green: #7ece62;
+    --ctheme-force-blue: #7aa2f7;
+    --ctheme-force-light-blue: #89ddff;
+    --ctheme-force-purple: #999aeb;
+    --ctheme-force-magenta: #da70d6;
+    --ctheme-force-cyan: #28c3de;
+    --ctheme-force-yellow: #ffd700;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #1f2335;
+        --def-color: white;
+        --box-color: #2b3048;
+        --box-shadow-color: rgba(92, 101, 145, 0.85);
+        --ctheme-white: #c0caf5;
+        --ctheme-red: #f76a6b;
+        --ctheme-green: #7ece62;
+        --ctheme-blue: #7aa2f7;
+        --ctheme-light-blue: #89ddff;
+        --ctheme-purple: #999aeb;
+        --ctheme-magenta: #da70d6;
+        --ctheme-cyan: #28c3de;
+        --ctheme-yellow: #ffd700;
+    }
 }
