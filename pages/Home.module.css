@@ -19,8 +19,8 @@
 }
 
 .title {
-    text-align: center;
-    font-size: 40px;
+    font-size: 30px;
+    word-break: break-word;
 }
 
 .title strong {
