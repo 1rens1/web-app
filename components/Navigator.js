@@ -5,7 +5,6 @@ export default function Navtest() {
     const links = [
         { href: '/', name: 'Home' },
         { href: '/todo', name: 'To Do App' },
-        { href: '/longest', name: 'Super long page' },
     ];
     function navToggle(e) {
         const nav = document.querySelector('.' + styles.nav);
@@ -35,7 +34,9 @@ export default function Navtest() {
                 <div className={styles.links}>
                     <NavLinks links={links} navToggle={navToggle} />
                 </div>
-                <div className={styles['darkmode-suggest']}>Website looks way cooler on dark mode.</div>
+                <div className={styles['darkmode-suggest']}>
+                    Website looks way cooler on dark mode.
+                </div>
             </nav>
             <div className={styles['empty-space']} onClick={navToggle}></div>
         </div>
