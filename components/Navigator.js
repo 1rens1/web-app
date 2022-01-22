@@ -5,6 +5,7 @@ export default function Navtest() {
     const links = [
         { href: '/', name: 'Home' },
         { href: '/todo', name: 'To Do App' },
+        { href: '/longest', name: 'Super long page' },
     ];
     function navToggle(e) {
         const nav = document.querySelector('.' + styles.nav);
