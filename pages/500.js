@@ -1,15 +1,15 @@
 import styles from './Error.module.scss';
 
-export default function Custom404() {
+export default function Custom505() {
     return (
         <div className={styles.container}>
             <div className={styles.message}>
                 <strong
                     className={styles.code + ' text-3xl font-bold underline'}
                 >
-                    404
+                    500
                 </strong>{' '}
-                Not Found
+                Internal Server Error
             </div>
         </div>
     );

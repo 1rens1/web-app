@@ -5,7 +5,18 @@ $secondary: #e1e8ed;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     height: 100vh;
+
+    .question {
+        max-width: 500px;
+        width: 90%;
+        margin: 20px 50px;
+        input {
+            width: 100%;
+        }
+    }
+
     ._8b {
         position: relative;
         display: flex;
@@ -50,7 +61,7 @@ $secondary: #e1e8ed;
 
         .text-answer {
             font-size: 1rem;
-            border: 10px solid $secondary;
+            border: 10px solid transparent;
             margin-right: -250%;
         }
 

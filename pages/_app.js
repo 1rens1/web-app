@@ -1,21 +1,24 @@
 import 'bootstrap/scss/bootstrap.scss';
+import 'react-toastify/scss/main.scss';
+import 'tailwindcss/tailwind.css';
 import '../styles/globals.scss';
 import '../styles/nprogress.scss';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import 'tailwindcss/tailwind.css';
 import Head from 'next/head';
-import { Toaster } from 'react-hot-toast';
 import Navigator from '../components/Navigator';
+import { ToastContainer } from 'react-toastify';
 import { Router } from 'next/router';
 import nprogress from 'nprogress';
 
 function MyApp({ Component, pageProps }) {
     function handleRouteChangeStart(url) {
         nprogress.start();
+        console.log(`[URL] Loading: ${url}`);
     }
 
     function handleRouteChangeComplete(url) {
         nprogress.done();
+        console.log(`[URL] Loaded: ${url}`);
     }
 
     Router.events.on('routeChangeStart', handleRouteChangeStart);
@@ -52,7 +55,7 @@ function MyApp({ Component, pageProps }) {
                 <meta property='twitter:image' content='/preview.png' />
             </Head>
             <Navigator />
-            <Toaster />
+            <ToastContainer />
             <Component {...pageProps} />
         </>
     );

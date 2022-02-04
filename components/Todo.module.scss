@@ -87,9 +87,9 @@
 
 @media (prefers-color-scheme: dark) {
     .app {
-        box-shadow: 0px 5px 25px -10px rgb(92 101 145 / 85%);
-        -webkit-box-shadow: 0px 5px 25px -10px rgb(92 101 145 / 85%);
-        -moz-box-shadow: 0px 5px 25px -10px rgb(92 101 145 / 85%);
+        box-shadow: 0px 5px 25px -10px var(--box-shadow-color);
+        -webkit-box-shadow: 0px 5px 25px -10px var(--box-shadow-color);
+        -moz-box-shadow: 0px 5px 25px -10px var(--box-shadow-color);
     }
     .add-todo-input {
         color: inherit;

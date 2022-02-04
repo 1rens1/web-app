@@ -19,7 +19,8 @@ code,
     font-family: var(--monospace-font);
 }
 
-.unsel, br {
+.unsel,
+br {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -65,13 +66,23 @@ a {
     -moz-user-select: none;
 }
 
+.Toastify__toast {
+    box-shadow: 0 1px 10px 0 var(--box-shadow-color),
+        0 2px 15px 0 var(--box-shadow-color);
+}
+
 :root {
     --bg: #ffffff;
     --def-color: #000000;
     --box-color: #ffffff;
-    --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --box-shadow-color: rgba(0, 0, 0, 10%);
     --bezier-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
     --monospace-font: var(--bs-font-monospace);
+    --toastify-toast-background: var(--box-color);
+    --toastify-color-light: var(--box-color);
+    --toastify-color-dark: var(--box-color);
+    --toastify-text-color-light: var(--def-color);
+    --toastify-text-color-dark: var(--def-color);
 
     // Code Theme
     --ctheme-red: currentColor;
@@ -97,15 +108,14 @@ a {
         caret-color: white;
     }
     input {
-        &:focus {
-            color: var(--def-color) !important;
-        }
+        background: var(--bg) !important;
+        color: var(--def-color) !important;
     }
     :root {
         --bg: #1f2335;
         --def-color: white;
         --box-color: #2b3048;
-        --box-shadow-color: rgba(92, 101, 145, 0.85);
+        --box-shadow-color: #2b3048;
         --ctheme-white: #c0caf5;
         --ctheme-red: #f76a6b;
         --ctheme-green: #7ece62;
