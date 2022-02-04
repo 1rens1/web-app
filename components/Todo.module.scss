@@ -1,0 +1,97 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0 25px;
+}
+
+.change-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+
+.app {
+    background: var(--box-color);
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0px 5px 50px -10px var(--box-shadow-color);
+    -webkit-box-shadow: 0px 5px 50px -10px var(--box-shadow-color);
+    -moz-box-shadow: 0px 5px 50px -10px var(--box-shadow-color);
+    padding: 20px;
+    border-radius: 20px;
+
+    .todo-list {
+        height: 300px;
+        overflow-y: auto;
+        list-style: none;
+        position: relative;
+        padding: 0;
+
+        center {
+            display: flex;
+            align-items: center;
+            height: 300px;
+        }
+
+        .label {
+            display: flex;
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            word-wrap: break-word;
+            word-break: break-all;
+
+            .trash {
+                color: red;
+                display: none;
+                cursor: pointer;
+            }
+
+            &:hover .trash {
+                display: block;
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+
+    .add-todo-section {
+        display: flex;
+    }
+
+    .add-todo-input {
+        width: 100px;
+        background: transparent;
+        flex-grow: 1;
+        margin-right: 5px;
+        outline: none;
+
+        &::placeholder {
+            color: #ccc;
+            transition: transform 0.5s;
+        }
+    }
+}
+
+.btn-first {
+    margin-left: 0 !important;
+}
+
+.btn-last {
+    margin-right: 0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    .app {
+        box-shadow: 0px 5px 25px -10px rgb(92 101 145 / 85%);
+        -webkit-box-shadow: 0px 5px 25px -10px rgb(92 101 145 / 85%);
+        -moz-box-shadow: 0px 5px 25px -10px rgb(92 101 145 / 85%);
+    }
+    .add-todo-input {
+        color: inherit;
+    }
+}

@@ -1,36 +1,26 @@
-import '../styles/globals.css';
+import 'bootstrap/scss/bootstrap.scss';
+import '../styles/globals.scss';
+import '../styles/nprogress.scss';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'tailwindcss/tailwind.css';
 import Head from 'next/head';
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { Toaster } from 'react-hot-toast';
 import Navigator from '../components/Navigator';
-import Progress from '../components/progress/Progress';
-import { useProgressStore } from '../store/useProgressStore';
+import { Router } from 'next/router';
+import nprogress from 'nprogress';
 
 function MyApp({ Component, pageProps }) {
-    const setIsAnimating = useProgressStore((state) => state.setIsAnimating);
-    const isAnimating = useProgressStore((state) => state.isAnimating);
-    const router = useRouter();
+    function handleRouteChangeStart(url) {
+        nprogress.start();
+    }
 
-    useEffect(() => {
-        function handleStart() {
-            setIsAnimating(true);
-        }
+    function handleRouteChangeComplete(url) {
+        nprogress.done();
+    }
 
-        function handleStop() {
-            setIsAnimating(false);
-        }
-
-        router.events.on('routeChangeStart', handleStart);
-        router.events.on('routeChangeComplete', handleStop);
-        router.events.on('routeChangeError', handleStop);
-
-        return function () {
-            router.events.off('routeChangeStart', handleStart);
-            router.events.off('routeChangeComplete', handleStop);
-            router.events.off('routeChangeError', handleStop);
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [router]);
+    Router.events.on('routeChangeStart', handleRouteChangeStart);
+    Router.events.on('routeChangeComplete', handleRouteChangeComplete);
+    Router.events.on('routeChangeError', handleRouteChangeComplete);
 
     return (
         <>
@@ -59,17 +49,10 @@ function MyApp({ Component, pageProps }) {
                     property='twitter:description'
                     content='rens WebApp with NextJS'
                 />
-                <link
-                    rel='stylesheet'
-                    href='https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css'
-                    integrity='sha512-42kB9yDlYiCEfx2xVwq0q7hT4uf26FUgSIZBK8uiaEnTdShXjwr8Ip1V4xGJMg3mHkUt9nNuTDxunHF0/EgxLQ=='
-                    crossOrigin='anonymous'
-                    referrerpolicy='no-referrer'
-                />
                 <meta property='twitter:image' content='/preview.png' />
             </Head>
-            <Progress isAnimating={isAnimating} />
             <Navigator />
+            <Toaster />
             <Component {...pageProps} />
         </>
     );

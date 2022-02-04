@@ -1,4 +1,5 @@
-import styles from './Home.module.css';
+import Link from 'next/link';
+import styles from './Home.module.scss';
 
 export default function Home() {
     return (
@@ -11,9 +12,12 @@ export default function Home() {
                 <span className={styles.brackets}>()</span>
                 <span className={styles.semicolon}>;</span>
             </div>
-            <div style={{ marginTop: '1em' }}>
-                Click <span className={styles['nav-btn']}>≡</span> at the top
-                left of the screen to navigate
+            <div>
+                Click{' '}
+                <span className={styles['nav-btn']}>
+                    <i className='bi bi-list'></i>
+                </span>{' '}
+                at the top left of the screen to navigate
             </div>
         </div>
     );

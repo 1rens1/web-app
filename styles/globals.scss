@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 html,
 body {
     padding: 0;
@@ -8,6 +12,17 @@ body {
     background-color: var(--bg);
     overflow-y: overlay;
     color: var(--def-color);
+}
+
+code,
+.code {
+    font-family: var(--monospace-font);
+}
+
+.unsel, br {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 ::selection {
@@ -22,10 +37,9 @@ body {
 ::-webkit-scrollbar-thumb {
     background: rgba(225, 225, 225, 0.8);
     border-radius: 100px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(210, 210, 210, 0.8);
+    &:hover {
+        background: rgba(210, 210, 210, 0.8);
+    }
 }
 
 ::-webkit-scrollbar-track {
@@ -39,14 +53,10 @@ body {
 a {
     color: inherit;
     text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-* {
-    box-sizing: border-box;
+    &:hover {
+        text-decoration: underline;
+        color: inherit;
+    }
 }
 
 .unsel {
@@ -56,10 +66,14 @@ a:hover {
 }
 
 :root {
-    --bg: white;
-    --def-color: black;
+    --bg: #ffffff;
+    --def-color: #000000;
     --box-color: #ffffff;
     --box-shadow-color: rgba(0, 0, 0, 0.1);
+    --bezier-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --monospace-font: var(--bs-font-monospace);
+
+    // Code Theme
     --ctheme-red: currentColor;
     --ctheme-green: currentColor;
     --ctheme-blue: currentColor;
@@ -79,6 +93,14 @@ a:hover {
 }
 
 @media (prefers-color-scheme: dark) {
+    * {
+        caret-color: white;
+    }
+    input {
+        &:focus {
+            color: var(--def-color) !important;
+        }
+    }
     :root {
         --bg: #1f2335;
         --def-color: white;

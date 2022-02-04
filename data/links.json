@@ -1,0 +1,14 @@
+[
+    {
+        "href": "/",
+        "name": "Home"
+    },
+    {
+        "href": "/todo",
+        "name": "To Do App"
+    },
+    {
+        "href": "/8ball",
+        "name": "Magic 8 Ball"
+    }
+]

@@ -1,0 +1,61 @@
+$primary: #292f33;
+$secondary: #e1e8ed;
+
+.cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    ._8b {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: 250px;
+        height: 250px;
+        border-radius: 100%;
+        background-color: $primary;
+        overflow: hidden;
+
+        &.reveal {
+            .text-8 {
+                margin-left: -250%;
+            }
+
+            .text-answer {
+                margin-right: unset;
+            }
+        }
+
+        * {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $primary;
+            background: $secondary;
+            border-radius: 100%;
+            width: 150px;
+            height: 150px;
+            font-weight: bold;
+            text-align: center;
+            transition: margin-right 2s ease-in-out, margin-left 2s ease-in-out;
+        }
+
+        .text-8 {
+            font-size: calc(6rem);
+            margin-left: 0;
+        }
+
+        .text-answer {
+            font-size: 1rem;
+            border: 10px solid $secondary;
+            margin-right: -250%;
+        }
+
+        &:active {
+            cursor: default;
+        }
+    }
+}

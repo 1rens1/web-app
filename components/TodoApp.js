@@ -1,6 +1,7 @@
+import styles from './Todo.module.scss';
 import { useEffect, useRef, useState } from 'react';
-import styles from './Todo.module.css';
 import TodoList from './TodoList';
+import toast, { Toaster } from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
 
 const LOCAL_STORAGE_KEY = 'rens.todos';
@@ -8,6 +9,7 @@ const LOCAL_STORAGE_KEY = 'rens.todos';
 function TodoApp() {
     const [todos, setTodos] = useState([]);
     const todoNameRef = useRef();
+    const containerRef = useRef();
 
     useEffect(() => {
         const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
@@ -33,6 +35,18 @@ function TodoApp() {
     function handleAddTodo(e) {
         const name = todoNameRef.current.value;
         if (name === '') return;
+        if (name.length > 100)
+            return toast.error(
+                <div>
+                    To do name cannot be more than <strong>100</strong>{' '}
+                    characters. ({name.length})
+                </div>,
+                {
+                    position: 'bottom-left',
+                    duration: 1500,
+                }
+            );
+
         setTodos((prevTodos) => {
             return [
                 ...prevTodos,
@@ -46,6 +60,16 @@ function TodoApp() {
         setTodos([]);
     }
 
+    function handleRemoveTodoByid(id) {
+        if (!id) return;
+        const newTodos = [...todos];
+        setTodos(newTodos.filter((todo) => todo.id !== id));
+    }
+
+    function handleChangeBg(e) {
+        containerRef.current.style.backgroundColor = e.target.value;
+    }
+
     function handleClearComplete(e) {
         const newTodos = todos.filter((todo) => !todo.complete);
         setTodos(newTodos);
@@ -53,41 +77,58 @@ function TodoApp() {
 
     return (
         <>
-            <div className={styles.container}>
+            <input
+                type='color'
+                className={styles['change-bg']}
+                onChange={handleChangeBg}
+                defaultValue={'#ffffff'}
+                style={{ border: 'none' }}
+            />
+            <div className={styles.container} ref={containerRef}>
                 <div className={styles.app}>
-                    <TodoList todos={todos} toggleTodo={toggleTodo} />
+                    <TodoList
+                        todos={todos}
+                        toggleTodo={toggleTodo}
+                        handleRemoveTodoByid={handleRemoveTodoByid}
+                    />
                     <div className={styles['add-todo-section']}>
                         <input
                             ref={todoNameRef}
-                            className={styles['input-txt']}
+                            className={
+                                'form-control ' + styles['add-todo-input']
+                            }
                             type='text'
-                            placeholder='To-do Name'
+                            placeholder='To Do Name'
                             onKeyPress={handleInputKeyPress}
                         />
                         <button
                             onClick={handleAddTodo}
-                            className={`${styles.button} ${styles['add-todo-btn']}`}
+                            className={'btn btn-success btn-sm'}
                         >
-                            Add Todo
+                            Add To Do
                         </button>
                     </div>
-                    <div className={styles['clear-buttons']}>
+                    <div className='d-flex align-items-center justify-content-center'>
                         <button
                             onClick={handleClearComplete}
-                            className={styles.button}
+                            className={
+                                'btn btn-outline-danger btn-sm flex-grow-1 m-1 ' +
+                                styles['btn-first']
+                            }
                         >
                             Clear Completed
                         </button>
                         <button
-                            className={styles.button}
+                            className={
+                                'btn btn-outline-danger btn-sm flex-grow-1 m-1 ' +
+                                styles['btn-last']
+                            }
                             onClick={handleClearAll}
                         >
                             Clear All
                         </button>
                     </div>
-                    <div className={styles.uncompleted}>
-                        {todos.filter((todo) => !todo.complete).length} left
-                    </div>
+                    <div>{1} left</div>
                 </div>
             </div>
         </>

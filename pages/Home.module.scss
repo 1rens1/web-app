@@ -7,24 +7,30 @@
     width: 100vw;
     padding: 0 25px;
     font-size: 16px;
-    font-family: Consolas, monospace;
+    font-family: var(--monospace-font);
 }
 
 .nav-btn {
     background: var(--bg);
+    display: inline-block;
     color: var(--def-color);
     border: 2px solid var(--box-shadow-color);
     font-size: 20px;
-    padding: 2px 10px;
+    text-align: center;
+    padding: 5px 8px;
+
+    .nav-btn-icon {
+        height: 1rem;
+        width: 1rem;
+    }
 }
 
 .title {
     font-size: 30px;
     word-break: break-word;
-}
-
-.title strong {
-    color: var(--ctheme-force-purple);
+    strong {
+        color: var(--ctheme-force-purple);
+    }
 }
 
 .next {

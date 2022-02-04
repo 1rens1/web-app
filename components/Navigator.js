@@ -1,44 +1,59 @@
-import styles from './Navigator.module.css';
+import styles from './Navigator.module.scss';
 import NavLinks from './NavLinks';
+import Link from 'next/link';
+import links from '../data/links.json';
+import { Router } from 'next/router';
 
 export default function Navtest() {
-    const links = [
-        { href: '/', name: 'Home' },
-        { href: '/todo', name: 'To Do App' },
-    ];
-    function navToggle(e) {
+    function handleOpenNav() {
         const nav = document.querySelector('.' + styles.nav);
-        const emptyspace = document.querySelector('.' + styles['empty-space']);
-        if (nav.classList.contains(styles['nav-active']))
-            nav.classList.remove(styles['nav-active']);
-        else nav.classList.add(styles['nav-active']);
+        nav.classList.add(styles['nav-active']);
     }
+
+    function handleCloseNav() {
+        const nav = document.querySelector('.' + styles.nav);
+        nav.classList.remove(styles['nav-active']);
+    }
+
+    Router.events.on('routeChangeStart', handleCloseNav);
+
     return (
         <div>
             <button
                 className={styles['nav-btn']}
-                onClick={navToggle}
+                onClick={handleOpenNav}
                 tabIndex={-1}
             >
-                ≡
+                <span className='bi bi-list'></span>
             </button>
             <nav className={styles.nav}>
-                <div className={styles['nav-close']} onClick={navToggle}>
-                    &times;
-                </div>
+                <div
+                    className={'bi bi-x ' + styles['nav-close']}
+                    onClick={handleCloseNav}
+                ></div>
                 <div className={styles.title}>
                     <div>
                         <strong>rens</strong> NextJS App
                     </div>
                 </div>
                 <div className={styles.links}>
-                    <NavLinks links={links} navToggle={navToggle} />
+                    <NavLinks links={links} />
                 </div>
-                <div className={styles['darkmode-suggest']}>
-                    Website looks way cooler on dark mode.
+                <div className={styles.bottom}>
+                    <div className={styles.license}>
+                        <Link href='/license'>
+                            <a>License</a>
+                        </Link>
+                    </div>
+                    <div className={styles['darkmode-suggest']}>
+                        Website looks way cooler on dark mode.
+                    </div>
                 </div>
             </nav>
-            <div className={styles['empty-space']} onClick={navToggle}></div>
+            <div
+                className={styles['empty-space']}
+                onClick={handleCloseNav}
+            ></div>
         </div>
     );
 }
