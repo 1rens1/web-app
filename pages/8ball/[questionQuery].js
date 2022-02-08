@@ -102,7 +102,7 @@ export default function _8ball() {
 
     return (
         <div className={styles.cont}>
-            <div className='h1 m-4 fst-italic text-center'>{question}</div>
+            <div className='h1 m-4 fst-italic text-center text-break'>{question}</div>
             <div
                 ref={ballRef}
                 onClick={handleBallClick}

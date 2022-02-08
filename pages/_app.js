@@ -1,6 +1,5 @@
 import 'bootstrap/scss/bootstrap.scss';
 import 'react-toastify/scss/main.scss';
-import 'tailwindcss/tailwind.css';
 import '../styles/globals.scss';
 import '../styles/nprogress.scss';
 import 'bootstrap-icons/font/bootstrap-icons.css';
@@ -30,7 +29,7 @@ function MyApp({ Component, pageProps }) {
             <Head>
                 <title>rens</title>
                 <meta name='title' content='rens' />
-                <meta name='description' content='rens WebApp with NextJS' />
+                <meta name='description' content="rens' webapp with nextjs" />
                 <meta property='og:type' content='website' />
                 <meta
                     property='og:url'
@@ -39,7 +38,7 @@ function MyApp({ Component, pageProps }) {
                 <meta property='og:title' content='rens' />
                 <meta
                     property='og:description'
-                    content='rens WebApp with NextJS'
+                    content="rens' webapp with nextjs"
                 />
                 <meta property='og:image' content='/preview.png' />
                 <meta property='twitter:card' content='summary_large_image' />
@@ -50,7 +49,7 @@ function MyApp({ Component, pageProps }) {
                 <meta property='twitter:title' content='rens' />
                 <meta
                     property='twitter:description'
-                    content='rens WebApp with NextJS'
+                    content="rens' webapp with nextjs"
                 />
                 <meta property='twitter:image' content='/preview.png' />
             </Head>

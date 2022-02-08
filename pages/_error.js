@@ -6,7 +6,7 @@ export default function Error() {
             <div className={styles.message}>
                 {statusCode
                     ? `An error ${(
-                          <strong>statusCode</strong>
+                          <strong>{statusCode}</strong>
                       )} occurred on server`
                     : 'An error occurred on client'}
             </div>

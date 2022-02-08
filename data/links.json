@@ -10,5 +10,9 @@
     {
         "href": "/8ball",
         "name": "Magic Eight Ball"
+    },
+    {
+        "href": "/calculator",
+        "name": "Calculator"
     }
 ]
