@@ -8,7 +8,6 @@ export default function license() {
         { url: 'https://github.com/uuidjs/uuid', name: 'uuid' },
         { url: 'https://ricostacruz.com/nprogress/', name: 'NProgress' },
         { url: 'https://github.com/sass/dart-sass', name: 'Sass' },
-        { url: 'https://tailwindcss.com/', name: 'tailwindcss' },
         { url: 'https://sweetalert2.github.io/', name: 'SweetAlert2' },
         {
             url: 'https://fkhadra.github.io/react-toastify/',
