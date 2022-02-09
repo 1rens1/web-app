@@ -1,29 +1,30 @@
 import 'bootstrap/scss/bootstrap.scss';
-import 'react-toastify/scss/main.scss';
-import '../styles/globals.scss';
-import '../styles/nprogress.scss';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import Head from 'next/head';
-import Navigator from '../components/Navigator';
-import { ToastContainer } from 'react-toastify';
-import { Router } from 'next/router';
-import nprogress from 'nprogress';
+import 'react-toastify/dist/ReactToastify.css';
+import '../styles/nprogress.scss';
+import '../styles/globals.scss';
 
-function MyApp({ Component, pageProps }) {
-    function handleRouteChangeStart(url) {
+import type { AppProps } from 'next/app';
+import nprogress from 'nprogress';
+import Router from 'next/router';
+import Navigator from '../components/Navbar/Navigator';
+import Head from 'next/head';
+import { ToastContainer } from 'react-toastify';
+
+export default function App({ Component, pageProps }: AppProps) {
+    function handleRouteChangeStart(url: string) {
         nprogress.start();
-        console.log(`[URL] Loading: ${url}`);
+        console.log(`[URL] Loading ${url}`);
     }
 
-    function handleRouteChangeComplete(url) {
+    function handleRouteChangeComplete(url: string) {
         nprogress.done();
-        console.log(`[URL] Loaded: ${url}`);
+        console.log(`[URL] Loaded ${url}`);
     }
 
     Router.events.on('routeChangeStart', handleRouteChangeStart);
     Router.events.on('routeChangeComplete', handleRouteChangeComplete);
     Router.events.on('routeChangeError', handleRouteChangeComplete);
-
     return (
         <>
             <Head>
@@ -53,11 +54,9 @@ function MyApp({ Component, pageProps }) {
                 />
                 <meta property='twitter:image' content='/preview.png' />
             </Head>
+            <ToastContainer limit={50} />
             <Navigator />
-            <ToastContainer />
             <Component {...pageProps} />
         </>
     );
 }
-
-export default MyApp;

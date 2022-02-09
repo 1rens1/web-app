@@ -1,17 +1,16 @@
-import LicenseLibraryList from '../components/LicenseLibraryList';
+import LicenseLibraryList from '../components/License/LicenseLibraryList';
 
 export default function license() {
     const links = [
-        { url: 'https://nextjs.org', name: 'NextJS' },
-        { url: 'https://getbootstrap.com', name: 'Bootstrap' },
-        { url: 'https://icons.getbootstrap.com', name: 'Bootstrap Icons' },
-        { url: 'https://github.com/uuidjs/uuid', name: 'uuid' },
-        { url: 'https://ricostacruz.com/nprogress/', name: 'NProgress' },
-        { url: 'https://github.com/sass/dart-sass', name: 'Sass' },
-        { url: 'https://sweetalert2.github.io/', name: 'SweetAlert2' },
+        { href: 'https://nextjs.org', title: 'NextJS' },
+        { href: 'https://getbootstrap.com', title: 'Bootstrap' },
+        { href: 'https://icons.getbootstrap.com', title: 'Bootstrap Icons' },
+        { href: 'https://github.com/uuidjs/uuid', title: 'uuid' },
+        { href: 'https://ricostacruz.com/nprogress/', title: 'NProgress' },
+        { href: 'https://github.com/sass/dart-sass', title: 'Sass' },
         {
-            url: 'https://fkhadra.github.io/react-toastify/',
-            name: 'React-toastify',
+            href: 'https://fkhadra.github.io/react-toastify/',
+            title: 'React-toastify',
         },
     ];
 

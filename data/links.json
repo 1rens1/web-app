@@ -1,18 +1,18 @@
 [
     {
         "href": "/",
-        "name": "Home"
+        "title": "Home"
     },
     {
         "href": "/todo",
-        "name": "To Do App"
+        "title": "To Do App"
     },
     {
         "href": "/8ball",
-        "name": "Magic Eight Ball"
+        "title": "Magic Eight Ball"
     },
     {
         "href": "/calculator",
-        "name": "Calculator"
+        "title": "Calculator"
     }
 ]

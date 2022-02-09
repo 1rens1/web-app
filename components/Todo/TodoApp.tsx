@@ -8,12 +8,17 @@ const LOCAL_STORAGE_KEY = 'rens.todos';
 
 function TodoApp() {
     const [todos, setTodos] = useState([]);
-    const todoNameRef = useRef();
-    const containerRef = useRef();
+    const todoNameRef = useRef<HTMLInputElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const storedTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-        console.log(`[Todo] Loaded ${storedTodos.length} todos from localStorage`);
+        // get todos from local storage
+        const storedTodos = JSON.parse(
+            localStorage.getItem(LOCAL_STORAGE_KEY) || '[]'
+        );
+        console.log(
+            `[Todo] Loaded ${storedTodos.length} todos from localStorage`
+        );
         if (storedTodos) setTodos(storedTodos);
     }, []);
 
@@ -21,23 +26,25 @@ function TodoApp() {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
     }, [todos]);
 
-
-    function handleInputKeyPress(e) {
+    function handleInputKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
         if (e.key === 'Enter') return handleAddTodo();
     }
 
-    function toggleTodo(id) {
+    function toggleTodo(id: string) {
         if (!id) return;
         const newTodos = [...todos];
-        const todo = newTodos.find((todo) => todo.id === id);
+        // find the todo with the given id
+        const todo: any = newTodos.find((todo: any) => todo.id === id);
         todo.complete = !todo.complete;
-        console.log(`[Todo] Toggled todo: ${todo.id} (Current State: ${todo.complete})`);
+        console.log(
+            `[Todo] Toggled todo: ${todo.id} (Current State: ${todo.complete})`
+        );
         setTodos(newTodos);
     }
 
-    function handleAddTodo(e) {
-        const name = todoNameRef.current.value;
-        if (name === '') return;
+    function handleAddTodo(e: any = null) {
+        const name = todoNameRef.current?.value;
+        if (name === '' || name === undefined) return;
         if (name.length > 100)
             return toast.error(
                 <div>
@@ -47,35 +54,38 @@ function TodoApp() {
             );
 
         const _id = uuidv4();
+        // @ts-ignore
         setTodos((prevTodos) => {
             return [...prevTodos, { id: _id, name: name, complete: false }];
         });
         console.log(`[Todo] Added: "${name}" with id: ${_id}`);
+        // @ts-ignore
         todoNameRef.current.value = null;
     }
 
-    function handleClearAll(e) {
+    function handleClearAll(e: any = null) {
         console.log('[Todo] Cleared all');
         setTodos([]);
     }
 
-    function handleRemoveTodoByid(id) {
+    function handleRemoveTodoByid(id:string) {
         if (!id) return;
         const newTodos = [...todos];
-        setTodos(newTodos.filter((todo) => todo.id !== id));
+        setTodos(newTodos.filter((todo:any) => todo.id !== id));
         console.log('[Todo] Removed todo with id:', id);
     }
 
-    function handleChangeBg(e) {
-        console.log('[Todo] Changed background to:', e.target.value);
+    function handleChangeBg(e: React.ChangeEvent<HTMLInputElement>) {
+        // @ts-ignore
         containerRef.current.style.backgroundColor = e.target.value;
+        console.log('[Todo] Changed background to:', e.target.value);
     }
 
-    function handleClearComplete(e) {
-        const newTodos = todos.filter((todo) => !todo.complete);
+    function handleClearComplete(e: any = null) {
+        const newTodos = todos.filter((todo:any) => !todo.complete);
         console.log(
             `[Todo] Cleared completed todos (${JSON.stringify(
-                todos.filter((todo) => todo.complete)
+                todos.filter((todo:any) => todo.complete)
             )})`
         );
         setTodos(newTodos);
@@ -85,7 +95,7 @@ function TodoApp() {
         <>
             <input
                 type='color'
-                className={styles['change-bg']}
+                className={styles.change__bg}
                 onChange={handleChangeBg}
                 defaultValue={'#ffffff'}
                 style={{ border: 'none' }}
@@ -97,11 +107,11 @@ function TodoApp() {
                         toggleTodo={toggleTodo}
                         handleRemoveTodoByid={handleRemoveTodoByid}
                     />
-                    <div className={styles['add-todo-section']}>
+                    <div className={styles.add__todo__section}>
                         <input
                             ref={todoNameRef}
                             className={
-                                'form-control ' + styles['add-todo-input']
+                                'form-control ' + styles.add__todo__input
                             }
                             type='text'
                             placeholder='To Do Name'
@@ -119,7 +129,7 @@ function TodoApp() {
                             onClick={handleClearComplete}
                             className={
                                 'btn btn-outline-danger btn-sm flex-grow-1 m-1 ' +
-                                styles['btn-first']
+                                styles.btn__first
                             }
                         >
                             Clear Completed
@@ -127,14 +137,14 @@ function TodoApp() {
                         <button
                             className={
                                 'btn btn-outline-danger btn-sm flex-grow-1 m-1 ' +
-                                styles['btn-last']
+                                styles.btn__last
                             }
                             onClick={handleClearAll}
                         >
                             Clear All
                         </button>
                     </div>
-                    <div>{1} left</div>
+                    <div>{todos.length} left</div>
                 </div>
             </div>
         </>

@@ -7,7 +7,7 @@
     padding: 0 25px;
 }
 
-.change-bg {
+.change__bg {
     position: absolute;
     top: 0;
     right: 0;
@@ -24,18 +24,12 @@
     padding: 20px;
     border-radius: 20px;
 
-    .todo-list {
+    .todo__list {
         height: 300px;
         overflow-y: auto;
         list-style: none;
         position: relative;
         padding: 0;
-
-        center {
-            display: flex;
-            align-items: center;
-            height: 300px;
-        }
 
         .label {
             display: flex;
@@ -46,7 +40,7 @@
             word-break: break-all;
 
             .trash {
-                color: red;
+                color: #dc3545;
                 display: none;
                 cursor: pointer;
             }
@@ -59,11 +53,11 @@
         }
     }
 
-    .add-todo-section {
+    .add__todo__section {
         display: flex;
     }
 
-    .add-todo-input {
+    .add__todo__input {
         width: 100px;
         background: transparent;
         flex-grow: 1;
@@ -77,16 +71,16 @@
     }
 }
 
-.btn-first {
+.btn__first {
     margin-left: 0 !important;
 }
 
-.btn-last {
+.btn__last {
     margin-right: 0 !important;
 }
 
 @media (prefers-color-scheme: dark) {
-    .add-todo-input {
+    .add__todo__input {
         color: inherit;
     }
 }

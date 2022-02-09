@@ -1,18 +1,18 @@
 import styles from './Navigator.module.scss';
 import NavLinks from './NavLinks';
 import Link from 'next/link';
-import links from '../data/links.json';
+import links from '../../data/links.json';
 import { Router } from 'next/router';
+import { useRef } from 'react';
 
 export default function Navtest() {
+    const navRef = useRef<HTMLDivElement>(null);
     function handleOpenNav() {
-        const nav = document.querySelector('.' + styles.nav);
-        nav.classList.add(styles['nav-active']);
+        navRef.current?.classList.add(styles.nav__active);
     }
 
     function handleCloseNav() {
-        const nav = document.querySelector('.' + styles.nav);
-        nav.classList.remove(styles['nav-active']);
+        navRef.current?.classList.remove(styles.nav__active);
     }
 
     Router.events.on('routeChangeStart', handleCloseNav);
@@ -20,15 +20,15 @@ export default function Navtest() {
     return (
         <div>
             <button
-                className={styles['nav-btn']}
+                className={styles.nav__btn}
                 onClick={handleOpenNav}
                 tabIndex={-1}
             >
                 <span className='bi bi-list'></span>
             </button>
-            <nav className={styles.nav}>
+            <nav className={styles.nav} ref={navRef}>
                 <div
-                    className={'bi bi-x ' + styles['nav-close']}
+                    className={'bi bi-x ' + styles.nav__close}
                     onClick={handleCloseNav}
                 ></div>
                 <div className={styles.title}>
@@ -45,13 +45,13 @@ export default function Navtest() {
                             <a>License</a>
                         </Link>
                     </div>
-                    <div className={styles['darkmode-suggest']}>
+                    <div className={styles.darkmode__suggest}>
                         Website looks way cooler on dark mode.
                     </div>
                 </div>
             </nav>
             <div
-                className={styles['empty-space']}
+                className={styles.empty__space}
                 onClick={handleCloseNav}
             ></div>
         </div>

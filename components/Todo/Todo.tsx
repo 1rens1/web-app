@@ -1,21 +1,26 @@
-import { useRef } from 'react/cjs/react.production.min';
+import { useRef } from 'react';
 import styles from './Todo.module.scss';
 
-export default function Todo({ todo, toggleTodo, handleRemoveTodoByid }) {
+export default function Todo(props: {
+    todo: { id: string; name: string; complete: boolean };
+    toggleTodo: Function;
+    handleRemoveTodoByid: Function;
+}) {
+    const { todo, toggleTodo, handleRemoveTodoByid } = props;
     function handleTodoClicked() {
         toggleTodo(todo.id);
     }
 
-    function handleTrashClicked(e) {
+    function handleTrashClicked(e: React.MouseEvent<HTMLButtonElement>) {
         handleRemoveTodoByid(todo.id);
     }
 
-    function handleTrashMouseEnter(e) {
-        e.target.className = 'bi bi-trash-fill ' + styles.trash;
+    function handleTrashMouseEnter(e: React.MouseEvent<HTMLDivElement>) {
+        e.currentTarget.className = 'bi bi-trash-fill ' + styles.trash;
     }
-    
-    function handleTrashMouseLeave(e) {
-        e.target.className = 'bi bi-trash ' + styles.trash;
+
+    function handleTrashMouseLeave(e: React.MouseEvent<HTMLDivElement>) {
+        e.currentTarget.className = 'bi bi-trash ' + styles.trash;
     }
 
     return (

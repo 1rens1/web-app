@@ -1,4 +1,4 @@
-import styles from './Error.module.scss';
+import styles from '../styles/Error.module.scss';
 
 export default function Custom505() {
     return (

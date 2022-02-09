@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styles from './Home.module.scss';
 
 export default function Home() {
@@ -14,7 +13,7 @@ export default function Home() {
             </div>
             <div>
                 Click{' '}
-                <span className={styles['nav-btn']}>
+                <span className={styles.nav__btn}>
                     <i className='bi bi-list'></i>
                 </span>{' '}
                 at the top left of the screen to navigate

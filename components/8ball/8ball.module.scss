@@ -30,11 +30,11 @@ $secondary: #e1e8ed;
         overflow: hidden;
 
         &.reveal {
-            .text-8 {
+            .text__8 {
                 margin-left: -250%;
             }
 
-            .text-answer {
+            .text__answer {
                 margin-right: unset;
             }
         }
@@ -44,8 +44,8 @@ $secondary: #e1e8ed;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: $primary;
-            background: $secondary;
+            color: $primary !important;
+            background: $secondary !important;
             border-radius: 100%;
             width: 150px;
             height: 150px;
@@ -54,12 +54,12 @@ $secondary: #e1e8ed;
             transition: margin-right 2s ease-in-out, margin-left 2s ease-in-out;
         }
 
-        .text-8 {
+        .text__8 {
             font-size: 6rem;
             margin-left: 0;
         }
 
-        .text-answer {
+        .text__answer {
             font-size: 1rem;
             border: 10px solid transparent;
             margin-right: -250%;
@@ -78,10 +78,10 @@ $secondary: #e1e8ed;
                 width: 120px;
                 height: 120px;
             }
-            .text-8 {
+            .text__8 {
                 font-size: 4rem;
             }
-            .text-answer {
+            .text__answer {
                 font-size: 1rem;
             }
         }
