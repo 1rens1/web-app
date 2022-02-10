@@ -1,10 +1,13 @@
+import Head from 'next/head';
+import Calculator from '../components/Calculator/Calculator';
+
 export default function calculatorApp() {
     return (
-        <div
-            className='h1 m-0 d-flex justify-content-center align-items-center'
-            style={{ height: '100vh' }}
-        >
-            soon™
-        </div>
+        <>
+            <Head>
+                <title>rens - Calculator</title>
+            </Head>
+            <Calculator />
+        </>
     );
 }

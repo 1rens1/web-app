@@ -18,7 +18,7 @@ export default function Navtest() {
     Router.events.on('routeChangeStart', handleCloseNav);
 
     return (
-        <div>
+        <>
             <button
                 className={styles.nav__btn}
                 onClick={handleOpenNav}
@@ -42,7 +42,7 @@ export default function Navtest() {
                 <div className={styles.bottom}>
                     <div className={styles.license}>
                         <Link href='/license'>
-                            <a>License</a>
+                            <a tabIndex={-1}>License</a>
                         </Link>
                     </div>
                     <div className={styles.darkmode__suggest}>
@@ -50,10 +50,7 @@ export default function Navtest() {
                     </div>
                 </div>
             </nav>
-            <div
-                className={styles.empty__space}
-                onClick={handleCloseNav}
-            ></div>
-        </div>
+            <div className={styles.empty__space} onClick={handleCloseNav}></div>
+        </>
     );
 }

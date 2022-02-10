@@ -10,9 +10,9 @@ export default function Todo(props: {
                 return (
                     <li key={v4()}>
                         <a
-                            tabIndex={-1}
                             target='_blank'
                             rel='noreferrer'
+                            href={link.href}
                         >
                             {link.title}
                         </a>

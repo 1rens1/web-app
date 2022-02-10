@@ -5,7 +5,7 @@ export default function Todo() {
     return (
         <>
             <Head>
-                <title>To-Do App</title>
+                <title>rens - To Do App</title>
             </Head>
             <TodoApp />
         </>

@@ -3,8 +3,8 @@ import Todo from './Todo';
 
 export default function TodoList(props: {
     todos: Array<{ id: string; name: string; complete: boolean }>;
-    toggleTodo: Function;
-    handleRemoveTodoByid: Function;
+    toggleTodo: (id:string) => void;
+    handleRemoveTodoByid: (id:string) => void;
 }) {
     const { todos, toggleTodo, handleRemoveTodoByid } = props;
     function list() {

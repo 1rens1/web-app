@@ -3,8 +3,8 @@ import styles from './Todo.module.scss';
 
 export default function Todo(props: {
     todo: { id: string; name: string; complete: boolean };
-    toggleTodo: Function;
-    handleRemoveTodoByid: Function;
+    toggleTodo: (id: string) => void;
+    handleRemoveTodoByid: (id: string) => void;
 }) {
     const { todo, toggleTodo, handleRemoveTodoByid } = props;
     function handleTodoClicked() {
@@ -24,7 +24,7 @@ export default function Todo(props: {
     }
 
     return (
-        <li>
+        <li data-id={todo.id}>
             <label className={'form-check-label ' + styles.label}>
                 <input
                     type={'checkbox'}

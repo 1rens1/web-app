@@ -3,11 +3,20 @@ import { useEffect, useRef, useState } from 'react';
 import TodoList from './TodoList';
 import { toast } from 'react-toastify';
 import { v4 as uuidv4 } from 'uuid';
+import Head from 'next/head';
+import { NULL } from 'sass';
 
 const LOCAL_STORAGE_KEY = 'rens.todos';
 
-function TodoApp() {
-    const [todos, setTodos] = useState([]);
+export default function TodoApp() {
+    interface TodoInt {
+        id: string;
+        name: string;
+        complete: boolean;
+    }
+
+    const [todos, setTodos] = useState<TodoInt[]>([]);
+    const [domTitle, setDomTitle] = useState<string>('rens - To Do App');
     const todoNameRef = useRef<HTMLInputElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -24,6 +33,15 @@ function TodoApp() {
 
     useEffect(() => {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+        if (todos.length)
+            setDomTitle(
+                `rens - To Do App (${
+                    todos.filter((todo) => !todo.complete).length
+                } To Do - ${
+                    todos.filter((todo) => todo.complete).length
+                } Completed)`
+            );
+        else setDomTitle('rens - To Do App');
     }, [todos]);
 
     function handleInputKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
@@ -33,8 +51,8 @@ function TodoApp() {
     function toggleTodo(id: string) {
         if (!id) return;
         const newTodos = [...todos];
-        // find the todo with the given id
-        const todo: any = newTodos.find((todo: any) => todo.id === id);
+        const todo = newTodos.find((todo) => todo.id === id);
+        if (!todo) return;
         todo.complete = !todo.complete;
         console.log(
             `[Todo] Toggled todo: ${todo.id} (Current State: ${todo.complete})`
@@ -54,7 +72,6 @@ function TodoApp() {
             );
 
         const _id = uuidv4();
-        // @ts-ignore
         setTodos((prevTodos) => {
             return [...prevTodos, { id: _id, name: name, complete: false }];
         });
@@ -68,24 +85,28 @@ function TodoApp() {
         setTodos([]);
     }
 
-    function handleRemoveTodoByid(id:string) {
+    function handleRemoveTodoByid(id: string) {
         if (!id) return;
         const newTodos = [...todos];
-        setTodos(newTodos.filter((todo:any) => todo.id !== id));
+        setTodos(newTodos.filter((todo) => todo.id !== id));
         console.log('[Todo] Removed todo with id:', id);
     }
 
     function handleChangeBg(e: React.ChangeEvent<HTMLInputElement>) {
-        // @ts-ignore
-        containerRef.current.style.backgroundColor = e.target.value;
+        if (containerRef.current)
+            containerRef.current.style.backgroundColor = e.target.value;
         console.log('[Todo] Changed background to:', e.target.value);
     }
 
-    function handleClearComplete(e: any = null) {
-        const newTodos = todos.filter((todo:any) => !todo.complete);
+    function handleClearComplete(
+        e: React.MouseEvent<HTMLButtonElement> | null
+    ) {
+        const newTodos = todos.filter((todo) => !todo.complete);
         console.log(
-            `[Todo] Cleared completed todos (${JSON.stringify(
-                todos.filter((todo:any) => todo.complete)
+            `[Todo] Cleared ${
+                todos.filter((todo) => todo.complete).length
+            } completed todos (${JSON.stringify(
+                todos.filter((todo) => todo.complete)
             )})`
         );
         setTodos(newTodos);
@@ -93,6 +114,9 @@ function TodoApp() {
 
     return (
         <>
+            <Head>
+                <title>{domTitle}</title>
+            </Head>
             <input
                 type='color'
                 className={styles.change__bg}
@@ -150,5 +174,3 @@ function TodoApp() {
         </>
     );
 }
-
-export default TodoApp;
