@@ -3,23 +3,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 20px;
+    padding: 5px 10px;
     width: 100vw;
     height: 100vh;
 }
 
 .calculator {
     border-radius: 20px;
-    color: #fff;
-    overflow: hidden;
-    max-width: 350px;
+    color: #ffffff;
+    background-color: #1e2133;
+    overflow: hidden overlay;
+    max-width: 320px;
     width: 100%;
 }
 
 .display {
     text-align: right;
-    padding: 10px 20px;
-    font-size: 3em;
+    padding: 5px 20px;
+    padding-bottom: 10px;
+    font-size: 2rem;
     max-width: 100%;
     margin: 0;
     background-color: #1e2133;
@@ -27,17 +29,17 @@
 }
 
 .calcDisplay {
-    overflow: hidden;
-    overflow-x: scroll;
+    overflow: overlay hidden;
     white-space: nowrap;
 }
 
 .buttons {
+    background-color: #2b3048;
     button {
         border: none;
         background-color: #2b3048;
         color: inherit;
-        font-size: 2rem;
+        font-size: 1.5rem;
         transition: background-color 0.1s ease-in-out;
         padding: 10px 5px;
         outline: none;

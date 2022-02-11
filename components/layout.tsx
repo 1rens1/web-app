@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-
 export default class Layout extends React.Component {
     componentDidMount() {
         window.addEventListener('load', this.handleLoad);
@@ -21,6 +20,7 @@ export default class Layout extends React.Component {
                         name='description'
                         content="rens' webapp with nextjs"
                     />
+                    <meta name='twitter:card' content='summary_large_image' />
                     <meta property='og:image' content='/preview.jpeg' />
                 </Head>
                 <div

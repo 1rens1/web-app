@@ -60,6 +60,13 @@ a {
     }
 }
 
+.grab-cur {
+    cursor: grab;
+    &:active {
+        cursor: grabbing;
+    }
+}
+
 .unsel {
     user-select: none;
     -webkit-user-select: none;
