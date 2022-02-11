@@ -2,6 +2,7 @@ import styles from './Calculator.module.scss';
 import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
+import { evaluate } from 'mathjs';
 
 export default function _calculator() {
     const [calc, setCalc] = useState('');
@@ -25,6 +26,15 @@ export default function _calculator() {
                 }
             })
         );
+        try {
+            setResult(evaluate(calc).toString());
+        } catch (e) {}
+        if (calc === '' || calc === undefined) {
+            setResult('');
+            console.log('[CALC] Calc cleared');
+        } else {
+            console.log('[CALC] Calc changed:', calc);
+        }
     }, [calc]);
 
     const ops = ['+', '-', '*', '/', '.'];
@@ -37,10 +47,6 @@ export default function _calculator() {
             return;
 
         setCalc(calc + value);
-
-        if (!ops.includes(value)) {
-            setResult(eval(calc + value).toString());
-        }
     }
 
     function createDidgits() {
@@ -60,10 +66,14 @@ export default function _calculator() {
 
     function calculate() {
         if (ops.includes(calc.slice(-1))) return;
+        if (calc === '' || calc === undefined) return;
+
         try {
-            setCalc(eval(calc).toString());
+            setCalc(evaluate(calc).toString());
+            console.log('[CALC] Calc evaluated:', calc);
         } catch (e) {
             toast.error('Invalid Expression');
+            console.log('[CALC] Invalid Expression:', calc);
         }
     }
 
@@ -79,7 +89,7 @@ export default function _calculator() {
                         {result ? (
                             <span>({+parseFloat(result).toFixed(4)})</span>
                         ) : (
-                            <br/>
+                            <br />
                         )}
                     </div>
                 </h1>
@@ -94,9 +104,9 @@ export default function _calculator() {
                             C
                         </button>
                         <button
-                            onClick={() =>
-                                setCalc((prevCalc) => prevCalc.slice(0, -1))
-                            }
+                            onClick={() => {
+                                setCalc((prevCalc) => prevCalc.slice(0, -1));
+                            }}
                         >
                             <i className='bi bi-backspace'></i>
                         </button>

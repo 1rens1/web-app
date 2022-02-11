@@ -6,6 +6,7 @@ export default function calculatorApp() {
         <>
             <Head>
                 <title>rens - Calculator</title>
+                <meta name='description' content='Simple online calculator' />
             </Head>
             <Calculator />
         </>

@@ -21,7 +21,6 @@ export default function TodoApp() {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        // get todos from local storage
         const storedTodos = JSON.parse(
             localStorage.getItem(LOCAL_STORAGE_KEY) || '[]'
         );
@@ -76,8 +75,7 @@ export default function TodoApp() {
             return [...prevTodos, { id: _id, name: name, complete: false }];
         });
         console.log(`[Todo] Added: "${name}" with id: ${_id}`);
-        // @ts-ignore
-        todoNameRef.current.value = null;
+        todoNameRef.current!.value = '';
     }
 
     function handleClearAll(e: any = null) {

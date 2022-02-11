@@ -6,6 +6,7 @@ export default function Todo() {
         <>
             <Head>
                 <title>rens - To Do App</title>
+                <meta name="description" content="Simple To Do App" />
             </Head>
             <TodoApp />
         </>
