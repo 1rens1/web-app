@@ -5,7 +5,6 @@ export default class Layout extends React.Component {
     componentDidMount() {
         window.addEventListener('load', this.handleLoad);
         document.documentElement.setAttribute('lang', 'en');
-        document.documentElement.style.overflow = 'hidden';
     }
 
     componentWillUnmount() {
@@ -85,6 +84,6 @@ export default class Layout extends React.Component {
             loader.style.opacity = '0';
             setTimeout(() => loader.remove(), 500);
         }
-        if (process.env.NODE_ENV === 'production') console.clear();
+        if (process.env.NODE_ENV !== 'development') console.clear();
     }
 }
