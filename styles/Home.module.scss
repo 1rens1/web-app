@@ -11,39 +11,16 @@
 }
 
 .nav__btn {
-    background: var(--bg);
     display: inline-block;
+    height: 2.6rem;
+    background: var(--bg);
     color: var(--def-color);
     border: 2px solid var(--box-shadow-color);
-    font-size: 20px;
-    text-align: center;
     padding: 5px 8px;
+    font-size: 20px;
 }
 
 .title {
     font-size: 30px;
     word-break: break-word;
-    strong {
-        color: var(--ctheme-force-purple);
-    }
-}
-
-.next {
-    color: var(--ctheme-white);
-}
-
-.app {
-    color: var(--ctheme-force-cyan);
-}
-
-.dot {
-    color: var(--ctheme-force-light-blue);
-}
-
-.semicolon {
-    color: var(--ctheme-force-blue);
-}
-
-.brackets {
-    color: var(--ctheme-force-yellow);
 }

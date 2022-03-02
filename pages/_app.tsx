@@ -1,15 +1,15 @@
 import 'bootstrap/scss/bootstrap.scss';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 import 'react-toastify/dist/ReactToastify.css';
-import '../styles/nprogress.scss';
-import '../styles/globals.scss';
+import '@styles/nprogress.scss';
+import '@styles/globals.scss';
 
 import type { AppProps } from 'next/app';
 import nprogress from 'nprogress';
 import Router from 'next/router';
-import Navigator from '../components/Nav/Navigator';
+import Navigator from '@components/Navigator';
 import { ToastContainer } from 'react-toastify';
-import Layout from '../components/layout';
+import Layout from '@components/layout';
+import { useState } from 'react';
 
 export default function App({ Component, pageProps }: AppProps) {
     function handleRouteChangeStart(url: string) {

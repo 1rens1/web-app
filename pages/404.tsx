@@ -1,4 +1,4 @@
-import styles from '../styles/Error.module.scss';
+import styles from '@styles/Error.module.scss';
 import { useRouter } from 'next/router';
 
 export default function Custom404() {

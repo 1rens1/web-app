@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import styles from './Todo.module.scss';
+import styles from '@styles/Todo.module.scss';
 
 export default function Todo(props: {
     todo: { id: string; name: string; complete: boolean };
@@ -11,7 +10,7 @@ export default function Todo(props: {
         toggleTodo(todo.id);
     }
 
-    function handleTrashClicked(e: React.MouseEvent<HTMLButtonElement>) {
+    function handleTrashClicked() {
         handleRemoveTodoByid(todo.id);
     }
 

@@ -1,4 +1,7 @@
 .nav__btn {
+    display: flex;
+    align-items: center;
+    height: 2.6rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -10,13 +13,10 @@
     cursor: pointer;
     font-size: 20px;
     z-index: 9999;
-
-    .nav__btn__icon {
-        height: 1em;
-    }
 }
 
 .nav__close {
+    display: flex;
     position: absolute;
     top: 0;
     right: 0;
@@ -68,7 +68,7 @@
     .bottom {
         position: absolute;
         bottom: 1em;
-        
+
         .darkmode__suggest {
             font-style: italic;
             color: gray;
@@ -80,15 +80,12 @@
     font-size: 1.5em;
     margin: 1em 0;
     color: var(--ctheme-yellow);
-    strong {
-        color: var(--ctheme-purple);
-    }
 }
 
 .li {
     font-size: 1.2em;
     list-style-type: none;
-    
+
     & a::before {
         content: '➜ ';
         color: var(--ctheme-magenta);

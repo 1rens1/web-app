@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import 'dotenv';
 export default class Layout extends React.Component {
     componentDidMount() {
         window.addEventListener('load', this.handleLoad);
@@ -41,6 +42,22 @@ export default class Layout extends React.Component {
                         flexDirection: 'column',
                     }}
                 >
+                    <span
+                        id='skip-load'
+                        className='btn'
+                        role='button'
+                        onClick={this.handleLoad}
+                        style={{
+                            position: 'absolute',
+                            top: '0',
+                            right: '0',
+                            opacity: '0',
+                            transform: 'translateY(-1em)',
+                            animation: 'fadeIn 1s 2s forwards',
+                        }}
+                    >
+                        Skip Loading <i className='bi bi-arrow-right'></i>
+                    </span>
                     <div
                         className='spinner-border'
                         style={{ width: '50px', height: '50px' }}
@@ -63,9 +80,11 @@ export default class Layout extends React.Component {
     }
 
     handleLoad() {
-        document.documentElement.removeAttribute('style');
         const loader = document.getElementById('loader') as HTMLDivElement;
-        loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 500);
+        if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => loader.remove(), 500);
+        }
+        if (process.env.NODE_ENV === 'production') console.clear();
     }
 }

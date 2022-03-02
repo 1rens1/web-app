@@ -1,4 +1,4 @@
-import LicenseLibraryList from '../components/License/LicenseLibraryList';
+import Libraries from '@components/License/Libraries';
 import Head from 'next/head';
 
 export default function license() {
@@ -36,7 +36,7 @@ export default function license() {
                         margin: '0 2em 1em 2em',
                     }}
                 >
-                    <LicenseLibraryList links={links} />
+                    <Libraries links={links} />
                 </ul>
                 <p>All Rights Reserved.</p>
             </div>

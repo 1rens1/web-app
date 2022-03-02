@@ -1,9 +1,11 @@
-import styles from './Navigator.module.scss';
-import NavLinks from './NavLinks';
+import styles from '@styles/Navigator.module.scss';
+import NavLinks from './Links';
 import Link from 'next/link';
-import links from '../../data/links.json';
+import links from '@data/links.json';
 import { Router } from 'next/router';
 import { useRef } from 'react';
+import { BsList, BsX } from 'react-icons/bs';
+import { IconContext } from 'react-icons';
 
 export default function Navtest() {
     const navRef = useRef<HTMLDivElement>(null);
@@ -24,16 +26,18 @@ export default function Navtest() {
                 onClick={handleOpenNav}
                 tabIndex={-1}
             >
-                <span className='bi bi-list'></span>
+                <BsList />
             </button>
-            <nav className={styles.nav} ref={navRef}>
-                <div
-                    className={'bi bi-x ' + styles.nav__close}
-                    onClick={handleCloseNav}
-                ></div>
+            <div className={styles.nav} ref={navRef}>
+                <div className={styles.nav__close} onClick={handleCloseNav}>
+                    <BsX />
+                </div>
                 <div className={styles.title}>
                     <div>
-                        <strong>rens</strong> NextJS App
+                        <span className='code-light-blue-force'>rens</span>{' '}
+                        <span className='code-blue-force'>Web</span>
+                        <span className='code-yellow-force'>()</span>
+                        <span className='code-blue-force'>;</span>
                     </div>
                 </div>
                 <div className={styles.links}>
@@ -49,7 +53,7 @@ export default function Navtest() {
                         Website looks way cooler on dark mode.
                     </div>
                 </div>
-            </nav>
+            </div>
             <div className={styles.empty__space} onClick={handleCloseNav}></div>
         </>
     );

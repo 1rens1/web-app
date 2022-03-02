@@ -1,4 +1,4 @@
-import styles from '../styles/Error.module.scss';
+import styles from '@styles/Error.module.scss';
 
 function Error({ statusCode }: { statusCode: number }) {
     console.log(statusCode);

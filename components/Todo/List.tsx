@@ -1,4 +1,4 @@
-import styles from './Todo.module.scss';
+import styles from '@styles/Todo.module.scss';
 import Todo from './Todo';
 
 export default function TodoList(props: {

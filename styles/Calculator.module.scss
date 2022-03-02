@@ -17,6 +17,13 @@
     width: 100%;
 }
 
+.grip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+}
+
 .display {
     text-align: right;
     padding: 5px 20px;
@@ -29,6 +36,7 @@
 }
 
 .calcDisplay {
+    height: 1.2em;
     overflow: overlay hidden;
     white-space: nowrap;
 }
