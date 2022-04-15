@@ -3,13 +3,14 @@
     justify-content: center;
     align-content: center;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 .title__container {
     position: relative;
-    font-size: 7.5rem;
-    font-size: clamp(7.5rem, 0rem + 20vw, 12.5rem);
+    font-size: 80px;
     line-height: .8em;
+    text-align: center;
 }
 
 .title,
@@ -17,27 +18,33 @@
     position: relative;
     margin: 0;
     color: var(--primary);
-    font-size: 7.5rem;
-    font-size: clamp(7.5rem, 0rem + 20vw, 12.5rem);
+    font-size: 80px;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-width: 1.5px;
     -webkit-text-stroke-color: currentColor;
     transform-style: preserve-3d;
     &::before {
-        content: 'rens';
+        content: '404 Not found';
         color: var(--secondary);
         position: absolute;
-        top: 0.05em;
-        left: 0.05em;
+        top: 0;
+        left: 0;
         pointer-events: none;
         animation: neonFlicker 3s infinite alternate;
-        transform: translateZ(-1px);
+        transform: translateZ(-1px) translate(0.05em, 0.05em);
     }
     &.title__shadow {
         position: absolute;
         top: 0;
         filter: blur(5px) brightness(1.2);
     }
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
 }
 
 @keyframes neonFlicker {

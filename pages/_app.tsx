@@ -1,37 +1,57 @@
-import 'bootstrap/scss/bootstrap.scss';
-import 'react-toastify/dist/ReactToastify.css';
-import '@styles/nprogress.scss';
 import '@styles/globals.scss';
-
+import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
-import nprogress from 'nprogress';
-import Router from 'next/router';
-import Navigator from '@components/Navigator';
-import { ToastContainer } from 'react-toastify';
-import Layout from '@components/layout';
+import router from 'next/router';
+import { useState } from 'react';
 
-export default function App({ Component, pageProps }: AppProps) {
-    function handleRouteChangeStart(url: string) {
-        nprogress.start();
-        console.log(`[URL] Loading ${url}`);
-    }
-    
-    function handleRouteChangeComplete(url: string) {
-        nprogress.done();
-        console.log(`[URL] Loaded ${url}`);
-    }
+const App = ({ Component, pageProps }: AppProps) => {
+    const [spinnerLoading, setSpinnerLoading] = useState(false);
 
-    Router.events.on('routeChangeStart', handleRouteChangeStart);
-    Router.events.on('routeChangeComplete', handleRouteChangeComplete);
-    Router.events.on('routeChangeError', handleRouteChangeComplete);
+    router.events.on('routeChangeStart', () => setSpinnerLoading(true));
+    router.events.on('routeChangeComplete', () => setSpinnerLoading(false));
+    router.events.on('routeChangeError', () => setSpinnerLoading(false));
+
+    const additionalLinkTags: ReadonlyArray<{
+        rel: string;
+        href: string;
+        sizes?: string;
+        type?: string;
+        color?: string;
+        keyOverride?: string;
+        as?: string;
+        crossOrigin?: string;
+    }> = [
+        {
+            rel: 'icon',
+            type: 'image/x-icon',
+            href: '/favicon.ico',
+        },
+        {
+            rel: 'preconnect',
+            href: 'https://fonts.gstatic.com',
+        },
+        {
+            rel: 'preconnect',
+            href: 'https://fonts.gstatic.com',
+            crossOrigin: 'anonymous',
+        },
+        {
+            rel: 'stylesheet',
+            href: 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap',
+        },
+    ];
 
     return (
         <>
-            <ToastContainer limit={50} />
-            <Navigator />
-            <Layout>
-                <Component {...pageProps} />
-            </Layout>
+            <DefaultSeo
+                defaultTitle='rens'
+                titleTemplate='%s - title'
+                additionalLinkTags={additionalLinkTags}
+            />
+            <div data-spinner-loader='' data-loading={spinnerLoading}></div>
+            <Component {...pageProps} />
         </>
     );
-}
+};
+
+export default App;
