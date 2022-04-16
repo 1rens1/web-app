@@ -269,7 +269,7 @@
     "@chakra-ui/utils" "1.10.4"
     "csstype" "3.0.9"
 
-"@chakra-ui/system@>=1.0.0":
+"@chakra-ui/system@^1.12.1", "@chakra-ui/system@>=1.0.0":
   "integrity" "sha512-Rp09/rMuPA3hF38OJxeQciGO9N0Ie1GxwHRAw1AFA/TY3fVyK9pNI5oN+J/1cAxq7v9yKdIr1YfnruJTI9xfEg=="
   "resolved" "https://registry.npmjs.org/@chakra-ui/system/-/system-1.12.1.tgz"
   "version" "1.12.1"
@@ -1346,7 +1346,7 @@
   "resolved" "https://registry.npmjs.org/flatted/-/flatted-3.2.5.tgz"
   "version" "3.2.5"
 
-"framer-motion@3.x || 4.x || 5.x || 6.x":
+"framer-motion@^6.3.0", "framer-motion@3.x || 4.x || 5.x || 6.x":
   "integrity" "sha512-Nm6l2cemuFeSC1fmq9R32sCQs1eplOuZ3r14/PxRDewpE3NUr+ul5ulGRRzk8K0Aa5p76Tedi3sfCUaTPa5fRg=="
   "resolved" "https://registry.npmjs.org/framer-motion/-/framer-motion-6.3.0.tgz"
   "version" "6.3.0"

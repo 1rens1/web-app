@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/system": "^1.12.1",
     "@chakra-ui/tooltip": "^1.5.1",
+    "framer-motion": "^6.3.0",
     "loader-utils": "^3.2.0",
     "next": "12.1.5",
     "next-seo": "^5.4.0",
