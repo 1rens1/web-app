@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://rens.vercel.app
+
+# Sitemaps
+Sitemap: https://rens.vercel.app/sitemap.xml

@@ -47,6 +47,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 defaultTitle='rens'
                 titleTemplate='%s - title'
                 additionalLinkTags={additionalLinkTags}
+                
             />
             <div data-spinner-loader='' data-loading={spinnerLoading}></div>
             <Component {...pageProps} />

@@ -1,0 +1,113 @@
+.wrapper {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    padding: 50px 20px;
+    position: relative;
+}
+
+.back__button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 40px;
+    color: var(--primary);
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: currentColor;
+    z-index: 9999;
+    span {
+        color: var(--primary);
+        filter: drop-shadow(0 0 5px currentColor) brightness(1.5);
+    }
+    &::before {
+        color: var(--secondary);
+        content: '←';
+        position: absolute;
+        filter: drop-shadow(0 0 5px currentColor) brightness(1.5);
+        transform: translate(2px, 2px);
+        animation: neon-flicker 3s infinite;
+    }
+}
+
+.title {
+    position: relative;
+    margin: 0;
+    color: var(--primary);
+    line-height: 0.8em;
+    font-size: 5rem;
+    font-size: clamp(5rem, 1.25rem + 10vw, 7.5rem);
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: currentColor;
+    transform: translate(-10px, -10px);
+    pointer-events: none;
+    span {
+        display: block;
+        line-height: 0.8em;
+        filter: drop-shadow(0 0 5px currentColor) brightness(1.5);
+    }
+    &::before {
+        transform: translate(10px, 10px);
+        content: 'contact';
+        position: absolute;
+        color: var(--secondary);
+        filter: drop-shadow(0 0 5px currentColor) brightness(1.5);
+        animation: neon-flicker 3s infinite;
+    }
+}
+
+@keyframes neon-flicker {
+    40% {
+        opacity: 1;
+    }
+    42% {
+        opacity: 0.8;
+    }
+    43% {
+        opacity: 1;
+    }
+    45% {
+        opacity: 0.3;
+    }
+    46% {
+        opacity: 1;
+    }
+}
+
+.contacts {
+    margin-top: 20px;
+    & > * {
+        display: block;
+        margin: 5px 0;
+        white-space: nowrap;
+        a {
+            button {
+                margin: 0;
+            }
+            &:hover {
+                animation: neon-flicker-first 3s forwards;
+                animation-delay: 0.5s;
+            }
+        }
+    }
+}
+
+@keyframes neon-flicker-first {
+    0% {
+        opacity: 1;
+    }
+    2% {
+        opacity: 0.8;
+    }
+    3% {
+        opacity: 1;
+    }
+    5% {
+        opacity: 0.3;
+    }
+    6% {
+        opacity: 1;
+    }
+}

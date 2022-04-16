@@ -9,8 +9,9 @@ const Custom404 = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.title__container} data-unsel=''>
-                <h1 className={styles.title}>404 Not found</h1>
-                <h1 className={styles.title__shadow}>404 Not found</h1>
+                <h1 className={styles.title}>
+                    <span>404 Not found</span>
+                </h1>
             </div>
             <div className={styles.buttons}>
                 <Link href='/'>
@@ -27,5 +28,4 @@ const Custom404 = () => {
         </div>
     );
 };
-
 export default Custom404;

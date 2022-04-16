@@ -4,23 +4,28 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/tooltip": "^1.5.1",
+    "loader-utils": "^3.2.0",
     "next": "12.1.5",
     "next-seo": "^5.4.0",
+    "next-sitemap": "^2.5.20",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-icons": "^4.3.1",
     "react-scroll-parallax": "^3.0.6",
-    "sass": "^1.50.0"
+    "sass": "^1.50.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "17.0.24",
     "@types/react": "18.0.5",
     "@types/react-dom": "18.0.1",
+    "@types/uuid": "^8.3.4",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
     "typescript": "4.6.3"

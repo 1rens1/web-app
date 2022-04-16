@@ -22,15 +22,17 @@ body {
     background-position: 0 0;
     background-size: $polkadotDistance $polkadotDistance;
     color: #fff;
+    cursor: var(--cur-default);
 }
 
 a {
     color: currentColor;
     text-decoration: none;
+    cursor: var(--cur-pointer);
 }
 
 button {
-    cursor: pointer;
+    cursor: var(--cur-pointer);
     font-family: inherit;
     font-size: 1em;
     padding: 10px 15px;
@@ -41,17 +43,14 @@ button {
     display: inline-flex;
     align-items: center;
     transform: translateY(-2px);
-    background: var(--primary);
-    // color: var(--secondary);
+    // background: var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    filter: drop-shadow(0 0 5px currentColor);
     @extend [data-unsel];
     svg {
         margin-right: 0.5em;
-    }
-    box-shadow: 5px 5px 0 0 var(--secondary);
-    transition: box-shadow 0.2s ease-in-out, outline 0.2s ease-in-out;
-    &:focus,
-    &:hover {
-        box-shadow: 0 0 0 0 var(--secondary);
     }
     &:focus {
         outline: 2px solid var(--secondary);
@@ -70,14 +69,15 @@ button {
     border: 2px solid var(--primary);
     border-top-color: transparent;
     border-right-color: transparent;
+    border-bottom-width: 0px;
     animation: spin 0.5s linear infinite;
     z-index: 9999;
     bottom: 20px;
     right: 20px;
     opacity: 0;
-    filter: blur(0.5px);
+    filter: drop-shadow(0 0 5px var(--primary));
     pointer-events: none;
-    transition: opacity 0.1s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
     &[data-loading='true'] {
         opacity: 1;
     }
@@ -113,6 +113,11 @@ button {
 
 :root {
     --primary: #00ffff;
+    --primary-shadow: #00ffff99;
     --secondary: #ff00ff;
+    --secondary-shadow: #ff00ff99;
     --background-color: #07131f;
+
+    --cur-default: url('/cursors/default.png'), default;
+    --cur-pointer: url('/cursors/pointer.png') 6 1, pointer;
 }
