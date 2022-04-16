@@ -2,7 +2,7 @@ import '@styles/globals.scss';
 import { DefaultSeo } from 'next-seo';
 import type { AppProps } from 'next/app';
 import router from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const App = ({ Component, pageProps }: AppProps) => {
     const [spinnerLoading, setSpinnerLoading] = useState(false);
@@ -40,6 +40,20 @@ const App = ({ Component, pageProps }: AppProps) => {
             href: 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap',
         },
     ];
+
+    const handleRouteChange = (url: string) => {
+        // @ts-ignore
+        window.gtag('config', 'G-M7HSY6DX7V', {
+            page_path: url,
+        });
+    };
+
+    useEffect(() => {
+        router.events.on('routeChangeComplete', handleRouteChange);
+        return () =>
+            router.events.off('routeChangeComplete', handleRouteChange);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [router.events]);
 
     return (
         <>
