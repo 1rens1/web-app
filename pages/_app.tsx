@@ -45,9 +45,15 @@ const App = ({ Component, pageProps }: AppProps) => {
         <>
             <DefaultSeo
                 defaultTitle='rens'
-                titleTemplate='%s - title'
+                titleTemplate='%s - rens'
                 additionalLinkTags={additionalLinkTags}
-                
+                description='front-end ui/ux web developer.'
+                additionalMetaTags={[
+                    {
+                        name: 'theme-color',
+                        content: '#07131f',
+                    },
+                ]}
             />
             <div data-spinner-loader='' data-loading={spinnerLoading}></div>
             <Component {...pageProps} />
