@@ -13,6 +13,7 @@ import { BsChatLeftDots } from 'react-icons/bs';
 import Link from 'next/link';
 import { v4 as uuidv4 } from 'uuid';
 import { Tooltip } from '@chakra-ui/tooltip';
+import Neon from '@components/Neon';
 
 const Home: NextPage = () => {
     const stuffIUse: Array<{
@@ -64,7 +65,9 @@ const Home: NextPage = () => {
     return (
         <div className={styles.wrapper}>
             <h1 className={styles.title} data-unsel=''>
-                <span>rens</span>
+                <Neon>
+                    rens
+                </Neon>
             </h1>
             <div className={styles.role}>front-end ui/ux web developer.</div>
             <div className={styles.stuff_i_use}>
@@ -86,7 +89,7 @@ const Home: NextPage = () => {
             </div>
             <div className={styles.contact__button__wrapper}>
                 <Link href='/contact'>
-                    <a>
+                    <a tabIndex={-1}>
                         <button>
                             <BsChatLeftDots /> Contact Me
                         </button>

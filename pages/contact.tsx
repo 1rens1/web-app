@@ -1,3 +1,4 @@
+import Neon from '@components/Neon';
 import styles from '@styles/Contact.module.scss';
 import { NextSeo } from 'next-seo';
 import Link from 'next/link';
@@ -43,12 +44,12 @@ const contact = () => {
                 </Link>
                 <div style={{ maxWidth: '600px' }}>
                     <div className={styles.title} data-unsel=''>
-                        <span>contact</span>
+                        <Neon>contact</Neon>
                     </div>
                     <div className={styles.contacts}>
                         {contacts.map(({ label, link, icon }) => (
                             <div key={uuidv4()}>
-                                <a href={link} target='_blank' rel='noreferrer'>
+                                <a href={link} target='_blank' rel='noreferrer' tabIndex={-1}>
                                     <button>
                                         {icon} <span>{label}</span>
                                     </button>
