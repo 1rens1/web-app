@@ -16,50 +16,46 @@ import { Tooltip } from '@chakra-ui/tooltip';
 import Neon from '@components/Neon';
 
 const Home: NextPage = () => {
-    const stuffIUse: Array<{
-        name: string;
-        link: string;
-        icon: React.ComponentType<{ title?: string }>;
-    }> = [
+    const stuffIUse = [
         {
             name: 'Visual Studio Code',
             link: 'https://code.visualstudio.com/',
-            icon: SiVisualstudiocode,
+            icon: <SiVisualstudiocode/>,
         },
         {
             name: 'TypeScript',
             link: 'https://www.typescriptlang.org/',
-            icon: SiTypescript,
+            icon: <SiTypescript/>,
         },
         {
             name: 'JavaScript',
             link: 'https://www.typescriptlang.org/',
-            icon: SiJavascript,
+            icon: <SiJavascript/>,
         },
         {
             name: 'NextJS',
             link: 'https://nextjs.org/',
-            icon: SiNextdotjs,
+            icon: <SiNextdotjs/>,
         },
         {
             name: 'React',
             link: 'https://reactjs.org/',
-            icon: SiReact,
+            icon: <SiReact/>,
         },
         {
             name: 'Python',
             link: 'https://python.org/',
-            icon: SiPython,
+            icon: <SiPython/>,
         },
         {
             name: 'Svelte Kit',
             link: 'https://kit.svelte.dev/',
-            icon: SiSvelte,
+            icon: <SiSvelte/>,
         },
         {
             name: 'Svelte',
             link: 'https://svelte.dev/',
-            icon: SiSvelte,
+            icon: <SiSvelte/>,
         },
     ];
     return (
@@ -69,11 +65,11 @@ const Home: NextPage = () => {
                     rens
                 </Neon>
             </h1>
-            <div className={styles.role}>front-end ui/ux web developer.</div>
+            <div className={styles.role}>front-end ui/ux web designer.</div>
             <div className={styles.stuff_i_use}>
                 <div className={styles.stuff_i_use__title}>stuff i use:</div>
                 <div className={styles.stuff_i_use__list}>
-                    {stuffIUse.map(({ name, link, icon: Icon }) => (
+                    {stuffIUse.map(({ name, link, icon }) => (
                         <Tooltip key={uuidv4()} label={name} placement='bottom'>
                             <a
                                 href={link}
@@ -81,7 +77,7 @@ const Home: NextPage = () => {
                                 rel='noreferrer'
                                 data-label={name.toLowerCase()}
                             >
-                                <Icon />
+                                {icon}
                             </a>
                         </Tooltip>
                     ))}

@@ -7,11 +7,7 @@ import { SiDiscord } from 'react-icons/si';
 import { v4 as uuidv4 } from 'uuid';
 
 const contact = () => {
-    const contacts: Array<{
-        label: string;
-        link: string;
-        icon: JSX.Element;
-    }> = [
+    const contacts = [
         {
             label: 'Email - rens@hrzn.email',
             link: 'mailto:rens@hrzn.email',

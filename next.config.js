@@ -2,7 +2,7 @@ const path = require('path');
 const loaderUtils = require('loader-utils');
 
 const hashOnlyIdent = (context, _, exportName) =>
-    'rens_' +
+    'rens-' +
     loaderUtils
         .getHashDigest(
             Buffer.from(

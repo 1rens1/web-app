@@ -1,8 +1,8 @@
 import styles from '@styles/404.module.scss';
-import { BiHome } from 'react-icons/bi';
-import { FiArrowLeft } from 'react-icons/fi';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { BiHome } from 'react-icons/bi';
+import { FiArrowLeft } from 'react-icons/fi';
 
 const Custom404 = () => {
     const router = useRouter();
