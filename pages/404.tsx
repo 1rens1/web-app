@@ -1,3 +1,4 @@
+import Neon from '@components/Neon';
 import styles from '@styles/404.module.scss';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -10,7 +11,7 @@ const Custom404 = () => {
         <div className={styles.wrapper}>
             <div className={styles.title__container} data-unsel=''>
                 <h1 className={styles.title}>
-                    <span>404 Not found</span>
+                    <Neon>404 Not Found</Neon>
                 </h1>
             </div>
             <div className={styles.buttons}>
