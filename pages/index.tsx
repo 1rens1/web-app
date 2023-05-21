@@ -1,5 +1,9 @@
-import type { NextPage } from 'next';
+import { Tooltip } from '@chakra-ui/tooltip';
+import Neon from '@components/Neon';
 import styles from '@styles/Home.module.scss';
+import type { NextPage } from 'next';
+import Link from 'next/link';
+import { BsChatLeftDots } from 'react-icons/bs';
 import {
     SiJavascript,
     SiNextdotjs,
@@ -9,68 +13,66 @@ import {
     SiTypescript,
     SiVisualstudiocode,
 } from 'react-icons/si';
-import { BsChatLeftDots } from 'react-icons/bs';
-import Link from 'next/link';
-import { v4 as uuidv4 } from 'uuid';
-import { Tooltip } from '@chakra-ui/tooltip';
-import Neon from '@components/Neon';
 
 const Home: NextPage = () => {
     const stuffIUse = [
         {
             name: 'Visual Studio Code',
             link: 'https://code.visualstudio.com/',
-            icon: <SiVisualstudiocode/>,
+            icon: <SiVisualstudiocode />,
         },
         {
             name: 'TypeScript',
             link: 'https://www.typescriptlang.org/',
-            icon: <SiTypescript/>,
+            icon: <SiTypescript />,
         },
         {
             name: 'JavaScript',
             link: 'https://www.typescriptlang.org/',
-            icon: <SiJavascript/>,
+            icon: <SiJavascript />,
         },
         {
             name: 'NextJS',
             link: 'https://nextjs.org/',
-            icon: <SiNextdotjs/>,
+            icon: <SiNextdotjs />,
         },
         {
             name: 'React',
             link: 'https://reactjs.org/',
-            icon: <SiReact/>,
+            icon: <SiReact />,
         },
         {
             name: 'Python',
             link: 'https://python.org/',
-            icon: <SiPython/>,
+            icon: <SiPython />,
         },
         {
             name: 'Svelte Kit',
             link: 'https://kit.svelte.dev/',
-            icon: <SiSvelte/>,
+            icon: <SiSvelte />,
         },
         {
             name: 'Svelte',
             link: 'https://svelte.dev/',
-            icon: <SiSvelte/>,
+            icon: <SiSvelte />,
         },
     ];
     return (
         <div className={styles.wrapper}>
             <h1 className={styles.title} data-unsel=''>
-                <Neon>
-                    rens
-                </Neon>
+                <Neon>rens</Neon>
             </h1>
             <div className={styles.role}>front-end ui/ux web designer.</div>
             <div className={styles.stuff_i_use}>
                 <div className={styles.stuff_i_use__title}>stuff i use:</div>
                 <div className={styles.stuff_i_use__list}>
                     {stuffIUse.map(({ name, link, icon }) => (
-                        <Tooltip key={uuidv4()} label={name} placement='bottom'>
+                        // @ts-ignore
+                        <Tooltip
+                            key={name + link}
+                            label={name}
+                            placement='bottom'
+                        >
                             <a
                                 href={link}
                                 target='_blank'
@@ -84,12 +86,10 @@ const Home: NextPage = () => {
                 </div>
             </div>
             <div className={styles.contact__button__wrapper}>
-                <Link href='/contact'>
-                    <a tabIndex={-1}>
-                        <button>
-                            <BsChatLeftDots /> Contact Me
-                        </button>
-                    </a>
+                <Link href='/contact' tabIndex={-1}>
+                    <button>
+                        <BsChatLeftDots /> Contact Me
+                    </button>
                 </Link>
             </div>
         </div>

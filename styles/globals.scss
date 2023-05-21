@@ -1,28 +1,17 @@
-$polkadotColor: 150;
-$polkadotTransparency: 25%;
-$polkadotDistance: 5vh; // may affect size
-$polkadotSize: 5%;
-
-html,
 body {
     padding: 0;
     margin: 0;
     font-family: consolas, monospace, sans-serif;
-    background: radial-gradient(
-            rgba(
-                    $polkadotColor,
-                    $polkadotColor,
-                    $polkadotColor,
-                    $polkadotTransparency
-                )
-                $polkadotSize,
-            transparent 5%
-        ),
-        var(--background-color);
-    background-position: 0 0;
-    background-size: $polkadotDistance $polkadotDistance;
+    background: url(/dot.svg), var(--background-color);
+    background-position: 50% 50%;
+    background-size: 32px 32px;
+    transition: background-size 1s ease-in-out;
     color: #fff;
     cursor: var(--cur-default);
+}
+
+body.anchor-hover {
+    background-size: 34px 34px;
 }
 
 a {

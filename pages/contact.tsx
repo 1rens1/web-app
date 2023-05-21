@@ -4,7 +4,6 @@ import { NextSeo } from 'next-seo';
 import Link from 'next/link';
 import { BsEnvelope, BsGithub, BsTwitter } from 'react-icons/bs';
 import { SiDiscord } from 'react-icons/si';
-import { v4 as uuidv4 } from 'uuid';
 
 const contact = () => {
     const contacts = [
@@ -33,10 +32,8 @@ const contact = () => {
         <>
             <NextSeo title='contact' description='contact me' />
             <div className={styles.wrapper}>
-                <Link href='/'>
-                    <a className={styles.back__button} data-unsel=''>
-                        <span>&larr;</span>
-                    </a>
+                <Link href='/' className={styles.back__button} data-unsel=''>
+                    <span>&larr;</span>
                 </Link>
                 <div style={{ maxWidth: '600px' }}>
                     <div className={styles.title} data-unsel=''>
@@ -44,8 +41,13 @@ const contact = () => {
                     </div>
                     <div className={styles.contacts}>
                         {contacts.map(({ label, link, icon }) => (
-                            <div key={uuidv4()}>
-                                <a href={link} target='_blank' rel='noreferrer' tabIndex={-1}>
+                            <div key={label + link}>
+                                <a
+                                    href={link}
+                                    target='_blank'
+                                    rel='noreferrer'
+                                    tabIndex={-1}
+                                >
                                     <button>
                                         {icon} <span>{label}</span>
                                     </button>

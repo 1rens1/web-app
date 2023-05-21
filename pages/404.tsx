@@ -15,12 +15,10 @@ const Custom404 = () => {
                 </h1>
             </div>
             <div className={styles.buttons}>
-                <Link href='/'>
-                    <a tabIndex={-1}>
-                        <button>
-                            <BiHome /> Go Home
-                        </button>
-                    </a>
+                <Link href='/' tabIndex={-1}>
+                    <button>
+                        <BiHome /> Go Home
+                    </button>
                 </Link>
                 <button onClick={router.back}>
                     <FiArrowLeft /> Go Back
