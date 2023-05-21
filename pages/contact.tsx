@@ -18,8 +18,8 @@ const contact = () => {
             icon: <SiDiscord />,
         },
         {
-            label: 'Twitter - @rendevv',
-            link: 'https://twitter.com/rendevv',
+            label: 'Twitter - @rensdevv',
+            link: 'https://twitter.com/rensdevv',
             icon: <BsTwitter />,
         },
         {
